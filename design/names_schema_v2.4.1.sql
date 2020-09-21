@@ -4,9 +4,11 @@
 --   DBMS       : MySql 
 --   -------------------------------------------------- 
 
+-- Create database
+CREATE DATABASE DISCS_NAMING;
+USE DISCS_NAMING;
 
 SET FOREIGN_KEY_CHECKS=0;
-
 
 --  Drop Tables, Stored Procedures and Views 
 
