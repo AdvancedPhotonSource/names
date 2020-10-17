@@ -20,7 +20,7 @@
                 <p:panel styleClass="Logo">
                     <h:outputText value="#{msgs.title}"  styleClass="title"/>
                     <h:panelGroup style="float:  right; font-size:  x-small">
-                        <h:outputText value="Release: #{publicationManager.latestRelease eq null? 'None' : publicationManager.latestRelease.id} " />                    
+                        <h:outputText value="Release: #{publicationManager.latestRelease eq null? 'C2' : publicationManager.latestRelease.id}-#{msgs.version} " />
                         <h:outputText value="#{publicationManager.latestRelease eq null? ' ': publicationManager.latestRelease.releaseDate}">                    
                             <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:outputText>
