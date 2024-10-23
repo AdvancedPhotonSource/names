@@ -35,6 +35,15 @@
     </context-param>
     <security-constraint>
         <web-resource-collection>
+            <web-resource-name>httpToHttps</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
             <web-resource-name>auth</web-resource-name>
             <url-pattern>/request-proc.xhtml</url-pattern>
             <url-pattern>/request-sub.xhtml</url-pattern>
