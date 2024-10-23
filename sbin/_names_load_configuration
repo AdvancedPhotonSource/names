@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Copyright (c) UChicago Argonne, LLC. All rights reserved.
+# See LICENSE file.
+
+
+#
+# Script used for creation of configuration file used for CDB.
+#
+# Usage:
+#
+# $0 [NAMES_DB_NAME]
+#
+
+if [ -z "${NAMES_ROOT_DIR}" ]; then
+    NAMES_ROOT_DIR=$MY_DIR/..
+fi
+NAMES_ENV_FILE=${NAMES_ROOT_DIR}/setup.sh
+if [ ! -f ${NAMES_ENV_FILE} ]; then
+    echo "Environment file ${NAMES_ENV_FILE} does not exist."
+    exit 2
+fi
+. ${NAMES_ENV_FILE} > /dev/null
+
+# Use first argument as db name, if provided
+NAMES_DB_NAME=${NAMES_DB_NAME:=naming}
+if [ ! -z "$1" ]; then
+    NAMES_DB_NAME=$1
+fi
+
+echo "Using DB name: $NAMES_DB_NAME"
+
+NAMES_ETC_DIR=$NAMES_INSTALL_DIR/etc
+
+# Look for deployment file in etc directory.
+deployConfigFile=$NAMES_ETC_DIR/${NAMES_DB_NAME}.deploy.conf
+if [ -f $deployConfigFile ]; then
+    echo "Using deployment config file: $deployConfigFile"
+    . $deployConfigFile    
+else
+    echo "No configuration exists in $deployConfigFile" 
+    exit 1
+fi 
