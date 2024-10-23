@@ -23,20 +23,11 @@
                         <h:outputText value="Theme: " /> 
                     </p:column>
                     <p:column>
-                        <p:themeSwitcher id="basic" style="width:165px" value="#{preferencesManager.currentTheme}" >
+                        <p:selectOneMenu id="basic" style="width:165px" value="#{preferencesManager.currentTheme}" >
                             <f:selectItem itemLabel="Choose Theme" itemValue="#{preferencesManager.defaultTheme}" />
                             <f:selectItems value="#{preferencesManager.themes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme.code}"/>
                             <p:ajax listener="#{preferencesManager.saveTheme}" /> 
-                        </p:themeSwitcher>
-                        
-                        <ui:remove>
-                            <p:themeSwitcher value="#{preferencesManager.currentTheme}" >  
-                                <f:selectItem itemLabel="Choose Theme" itemValue="" />  
-                                <f:selectItems value="#{preferencesManager.themes}" /> 
-                                <p:ajax listener="#{preferencesManager.saveTheme}" /> 
-                            </p:themeSwitcher> 
-                        </ui:remove>
-
+                        </p:selectOneMenu>                       
                     </p:column>
                 </p:row>
 

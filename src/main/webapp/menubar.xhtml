@@ -10,9 +10,9 @@
     xmlns:h="http://java.sun.com/jsf/html">
 
     <h:form id="menuform">
-        <p:growl id="menumsgs"  showDetail="true" autoUpdate="true"/>
+        <p:growl id="menumsgs"  showDetail="true"/>
         <ui:include src="about.xhtml" />
-        <fc:logincomp display="false" updates=":menuform:mainMenu"/>
+        <fc:logincomp display="false" updates=":menuform:mainMenu @form:menumsgs"/>
         
         
         <p:menubar id="mainMenu" >
