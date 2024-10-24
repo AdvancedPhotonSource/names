@@ -2,7 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:cc="http://java.sun.com/jsf/composite">
@@ -14,8 +13,7 @@
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
-    <cc:implementation>
-        <ui:remove><p:growl id="logingrowl" /></ui:remove>
+    <cc:implementation>        
         <p:dialog id="loginDialog" widgetVar="loginWidget"  
                   visible="#{cc.attrs.display}" styleClass="noupdate" position="center top">                
             <f:facet name="header">  
@@ -23,12 +21,12 @@
             </f:facet>                 
             <p:panelGrid columns="2">
                 <h:outputLabel for="userid" value="#{msgs.loginUser}" />    
-                <p:inputText id="userid" value="#{loginManager.inputUserID}" required="true"  label="User ID" />
+                <p:inputText id="userid" value="#{loginManager.inputUserID}" required="true"  label="User ID"
+                             placeholder="#{msgs.loginUserWM}"/>
                 <h:outputLabel for="passwd" value="#{msgs.loginPass}" />
-                <p:password id="passwd" value="#{loginManager.inputPassword}"   label="Password"/>          
-            </p:panelGrid>       
-            <p:watermark for="userid" value="#{msgs.loginUserWM}" />
-            <p:watermark for="passwd" value="#{msgs.loginPassWM}" />
+                <p:password id="passwd" value="#{loginManager.inputPassword}"   label="Password"
+                            placeholder="#{msgs.loginPassWM}"/>          
+            </p:panelGrid>                           
             <h:messages id="loginmsgs"/>
             <p:commandButton id="loginBtn" value="#{msgs.loginBtn}" update="loginmsgs  #{cc.attrs.updates}" 
                              action="#{loginManager.onLogin}" style="float: right"

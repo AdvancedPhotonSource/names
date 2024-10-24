@@ -18,7 +18,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
-import org.primefaces.context.RequestContext;
+import org.primefaces.context.PrimeRequestContext;
 
 /**
  *
@@ -57,7 +57,7 @@ public class LoginManager implements Serializable {
         try {
             request.login(inputUserID, inputPassword);
             logger.log(Level.INFO,"Login successful for " + inputUserID);
-            RequestContext.getCurrentInstance().addCallbackParam("loginSuccess", true);
+            PrimeRequestContext.getCurrentInstance().getCallbackParams().put("loginSuccess", true);
             // context.getExternalContext().getSessionMap().put("user", inputUserID);
             showMessage(FacesMessage.SEVERITY_INFO, "You are logged in. Welcome to Proteus.", inputUserID);
             if (originalURL != null) {
@@ -65,7 +65,7 @@ public class LoginManager implements Serializable {
             }
         } catch (ServletException e) {          
             showMessage(FacesMessage.SEVERITY_ERROR, "Login Failed! Please try again. ", "Status: ");
-            RequestContext.getCurrentInstance().addCallbackParam("loginSuccess", false);
+            PrimeRequestContext.getCurrentInstance().getCallbackParams().put("loginSuccess", false);
         } finally {
             inputPassword = "xxxxxxxx"; // ToDo implement a better way destroy the password (from JVM)
             userManager.init();

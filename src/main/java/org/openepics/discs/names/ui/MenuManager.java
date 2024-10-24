@@ -26,6 +26,7 @@ import javax.inject.Named;
 import org.openepics.discs.names.ejb.NamesEJB;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultMenuItem;
+import org.primefaces.model.menu.MenuElement;
 import org.primefaces.model.menu.MenuModel;
 
 /**
@@ -65,7 +66,8 @@ public class MenuManager implements Serializable {
         item.setId("_all");
         item.setValue("All");
         item.setUrl("/names.xhtml");
-        model.addElement(item);
+        List<MenuElement> elements = model.getElements();
+        elements.add(item);
         // ToDo: Move to facelets, if possible
         for (NameCategory cat : categories) {
             item = new DefaultMenuItem();
@@ -75,7 +77,7 @@ public class MenuManager implements Serializable {
             // submenu.getChildren().add(item);
             // item.setUpdate("@form");
             // menubar.getChildren().add(item);
-            model.addElement(item);
+            elements.add(item);
         }
 
         // submenu.getChildren().add(item);
