@@ -32,3 +32,7 @@ if [ -z $NAMES_INSTALL_DIR ]; then
         export NAMES_INSTALL_DIR=`pwd`
     fi
 fi
+
+export NAMES_SUPPORT_DIR=$NAMES_INSTALL_DIR/support-`hostname -s`
+export PATH=$NAMES_SUPPORT_DIR/bin:$PATH
+export PATH=$NAMES_SUPPORT_DIR/payara/glassfish/bin:$PATH
