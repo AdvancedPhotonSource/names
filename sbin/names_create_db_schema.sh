@@ -19,7 +19,6 @@ fi
 # Get user db password and create passwd file for user. 
 NAMES_DB_PASSWORD=$NAMES_DB_USER_PASSWORD
 if [ -z "$NAMES_DB_USER_PASSWORD" ]; then
-    NAMES_DB_PASSWD_FILE="$NAMES_INSTALL_DIR/etc/$NAMES_DB_NAME.db.passwd"
     if [ -f $NAMES_DB_PASSWD_FILE ]; then
 	    NAMES_DB_PASSWORD=`cat $NAMES_DB_PASSWD_FILE`
     else

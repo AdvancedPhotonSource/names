@@ -24,11 +24,9 @@ fi
 
 # Use first argument as db name, if provided
 NAMES_DB_NAME=${NAMES_DB_NAME:=naming}
-if [ ! -z "$1" ]; then
-    NAMES_DB_NAME=$1
-fi
-
-echo "Using DB name: $NAMES_DB_NAME"
+# if [ ! -z "$1" ]; then
+#     NAMES_DB_NAME=$1
+# fi
 
 NAMES_ETC_DIR=$NAMES_INSTALL_DIR/etc
 
@@ -41,3 +39,6 @@ else
     echo "No configuration exists in $deployConfigFile" 
     exit 1
 fi 
+
+echo "Using DB name: $NAMES_DB_NAME"
+NAMES_DB_PASSWD_FILE="$NAMES_ETC_DIR/$NAMES_DB_NAME.db.passwd"
