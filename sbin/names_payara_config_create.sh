@@ -36,7 +36,7 @@ JDBC_SERVER=$NAMES_DB_HOST
 
 # TODO support production domain 
 
-echo "Starting glassfish server domain1."
+echo "Starting payara server domain1."
 ${ASADMIN} start-domain domain1
 
 echo "Creating Auth-realm org.openepics.discs"
@@ -51,5 +51,5 @@ ${ASADMIN} create-jdbc-resource --connectionpoolid org.openepics.names.dbpool or
 echo "Ping JDBC connection pool org.openepics.names.dbpool"
 ${ASADMIN} ping-connection-pool org.openepics.names.dbpool
 
-echo "Restarting glassfish server domain1."
+echo "Restarting payara server domain1."
 ${ASADMIN} restart-domain domain1
